@@ -1,0 +1,13 @@
+import { Injectable, ExecutionContext } from '@nestjs/common';
+import { AuthGuard } from '@nestjs/passport';
+
+@Injectable()
+export class OptionalJwtAuthGuard extends AuthGuard('jwt') {
+  handleRequest(err: any, user: any) {
+    // If there's an error (invalid/expired token), just return null
+    if (err || !user) {
+      return null;
+    }
+    return user;
+  }
+}
