@@ -56,7 +56,7 @@ A production-ready RESTful API built with NestJS, PostgreSQL, and TypeORM. This 
 #### Option 1: Production Setup
 ```bash
 # Clone the repository
-git clone <repository-url>
+git clone https://github.com/tokudev-id/toku-travel-api.git
 cd nest-travel-api
 
 # Start all services (API, PostgreSQL, Nginx)
@@ -72,7 +72,7 @@ docker-compose down
 #### Option 2: Development Setup
 ```bash
 # Clone the repository
-git clone <repository-url>
+git clone https://github.com/tokudev-id/toku-travel-api.git
 cd nest-travel-api
 
 # Start development environment
