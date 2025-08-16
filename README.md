@@ -1,6 +1,6 @@
-# 🚀 Template API
+# 🚀 NestJS Backend Template
 
-A production-ready RESTful API built with NestJS, PostgreSQL, and TypeORM. This API provides authentication, article management, and comment functionality with industry-standard security and performance features.
+A clean NestJS template with PostgreSQL and TypeORM, focused on user authentication and profile management. This template provides a production-ready foundation for building backend services with industry-standard security features.
 
 ## 🛠 Tech Stack
 
@@ -14,24 +14,12 @@ A production-ready RESTful API built with NestJS, PostgreSQL, and TypeORM. This 
 
 ## 📋 Features
 
-### ✅ Authentication
+### ✅ User Services
 - User registration with email validation
 - User login with JWT token generation
 - Password hashing with bcrypt
 - JWT strategy and guards
-
-### ✅ Articles CRUD
-- Create article (authenticated users only)
-- Get all articles (public)
-- Get article by ID (public)
-- Update article (author only)
-- Delete article (author only)
-
-### ✅ Comments CRUD
-- Create comment on article (authenticated users only)
-- Get all comments on article (public)
-- Update comment (author only)
-- Delete comment (author only)
+- User profile management
 
 ### ✅ Production Features
 - Rate limiting (100 requests per 15 minutes)
@@ -41,8 +29,6 @@ A production-ready RESTful API built with NestJS, PostgreSQL, and TypeORM. This 
 - Docker containerization
 - Nginx reverse proxy
 - Comprehensive logging
-- Pagination for articles and comments
-- Like/unlike functionality for articles
 
 ## 🚀 Quick Start
 
@@ -56,8 +42,8 @@ A production-ready RESTful API built with NestJS, PostgreSQL, and TypeORM. This 
 #### Option 1: Production Setup
 ```bash
 # Clone the repository
-git clone https://github.com/tokudev-id/toku-template-api.git
-cd nest-template-api
+git clone https://github.com/tokudev-id/nest-backend-template.git
+cd nest-backend-template
 
 # Start all services (API, PostgreSQL, Nginx)
 docker-compose up -d
@@ -72,8 +58,8 @@ docker-compose down
 #### Option 2: Development Setup
 ```bash
 # Clone the repository
-git clone https://github.com/tokudev-id/toku-template-api.git
-cd nest-template-api
+git clone https://github.com/tokudev-id/nest-backend-template.git
+cd nest-backend-template
 
 # Start development environment
 docker-compose -f docker-compose.dev.yml up -d --build
@@ -124,7 +110,7 @@ docker-compose -f docker-compose.dev.yml down
 
 ### 📖 Interactive Documentation
 - **Swagger UI**: http://localhost:3000/api/docs
-- **Postman Collection**: Import `Template-API.postman_collection.json` into Postman
+- **Postman Collection**: Import `NestJS-Template.postman_collection.json` into Postman
 
 ### 📋 Detailed API Reference
 For a complete list of all API endpoints with detailed request/response examples, see:
@@ -155,107 +141,29 @@ Content-Type: application/json
 }
 ```
 
-### 📝 Articles Endpoints
+### 👤 User Profile Endpoints
 
-#### Create Article (Authenticated)
+#### Get User Profile
 ```http
-POST /api/v1/articles
+GET /api/v1/users/me
+Authorization: Bearer <jwt-token>
+```
+
+#### Update User Profile
+```http
+PATCH /api/v1/users/me
 Authorization: Bearer <jwt-token>
 Content-Type: application/json
 
 {
-  "title": "My Template Story",
-  "content": "This is my amazing template experience..."
+  "name": "Updated Name",
+  "email": "updated@example.com"
 }
 ```
 
-#### Get All Articles (Public) - with Pagination
-```http
-GET /api/v1/articles?page=1&limit=10
-```
 
-#### Get Article by ID (Public)
-```http
-GET /api/v1/articles/1
-```
 
-#### Update Article (Author Only)
-```http
-PATCH /api/v1/articles/1
-Authorization: Bearer <jwt-token>
-Content-Type: application/json
 
-{
-  "title": "Updated Template Story",
-  "content": "Updated content..."
-}
-```
-
-#### Delete Article (Author Only)
-```http
-DELETE /api/v1/articles/1
-Authorization: Bearer <jwt-token>
-```
-
-### 💬 Comments Endpoints
-
-#### Create Comment (Authenticated)
-```http
-POST /api/v1/articles/1/comments
-Authorization: Bearer <jwt-token>
-Content-Type: application/json
-
-{
-  "content": "Great article! Thanks for sharing."
-}
-```
-
-#### Get Comments for Article (Public) - with Pagination
-```http
-GET /api/v1/articles/1/comments?page=1&limit=10
-```
-
-#### Update Comment (Author Only)
-```http
-PATCH /api/v1/articles/1/comments/1
-Authorization: Bearer <jwt-token>
-Content-Type: application/json
-
-{
-  "content": "Updated comment content"
-}
-```
-
-#### Delete Comment (Author Only)
-```http
-DELETE /api/v1/articles/1/comments/1
-Authorization: Bearer <jwt-token>
-```
-
-### ❤️ Likes Endpoints
-
-#### Like Article (Authenticated)
-```http
-POST /api/v1/articles/1/likes
-Authorization: Bearer <jwt-token>
-```
-
-#### Unlike Article (Authenticated)
-```http
-DELETE /api/v1/articles/1/likes
-Authorization: Bearer <jwt-token>
-```
-
-#### Get Likes Count (Public)
-```http
-GET /api/v1/articles/1/likes/count
-```
-
-#### Check Like Status (Authenticated)
-```http
-GET /api/v1/articles/1/likes/status
-Authorization: Bearer <jwt-token>
-```
 
 ## 🔧 Development
 
