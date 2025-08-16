@@ -1,13 +1,13 @@
-# Docker Compose configuration for Travel API (Development)
+# Docker Compose configuration for Template API (Development)
 
 services:
   # PostgreSQL Database
   db:
     image: postgres:15-alpine
-    container_name: travel-api-db
+    container_name: template-api-db
     restart: unless-stopped
     environment:
-      POSTGRES_DB: travel-app
+      POSTGRES_DB: template-app
       POSTGRES_USER: nestuser
       POSTGRES_PASSWORD: nestpass
     ports:
@@ -16,9 +16,9 @@ services:
       - postgres_data:/var/lib/postgresql/data
       - ./init-db.sql:/docker-entrypoint-initdb.d/init-db.sql
     networks:
-      - travel-network
+      - template-network
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U nestuser -d travel-app"]
+      test: ["CMD-SHELL", "pg_isready -U nestuser -d template-app"]
       interval: 10s
       timeout: 5s
       retries: 5
@@ -29,7 +29,7 @@ services:
       context: .
       dockerfile: Dockerfile
       target: production
-    container_name: travel-api
+    container_name: template-api
     restart: unless-stopped
     environment:
       NODE_ENV: local
@@ -37,7 +37,7 @@ services:
       POSTGRES_PORT: 5432
       POSTGRES_USER: nestuser
       POSTGRES_PASSWORD: nestpass
-      POSTGRES_DB: travel-app
+      POSTGRES_DB: template-app
       JWT_SECRET: your-super-secret-jwt-key-change-in-production
       JWT_EXPIRES_IN: 7d
       PORT: 3000
@@ -48,7 +48,7 @@ services:
       db:
         condition: service_healthy
     networks:
-      - travel-network
+      - template-network
     healthcheck:
       test: ["CMD-SHELL", "node -e \"require('http').get('http://localhost:3000/api/v1/health', (res) => { process.exit(res.statusCode === 200 ? 0 : 1) })\""]
       interval: 30s
@@ -61,5 +61,5 @@ volumes:
     driver: local
 
 networks:
-  travel-network:
+  template-network:
     driver: bridge 

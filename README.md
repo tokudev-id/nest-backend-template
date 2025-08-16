@@ -1,4 +1,4 @@
-# 🚀 Travel API
+# 🚀 Template API
 
 A production-ready RESTful API built with NestJS, PostgreSQL, and TypeORM. This API provides authentication, article management, and comment functionality with industry-standard security and performance features.
 
@@ -56,8 +56,8 @@ A production-ready RESTful API built with NestJS, PostgreSQL, and TypeORM. This 
 #### Option 1: Production Setup
 ```bash
 # Clone the repository
-git clone https://github.com/tokudev-id/toku-travel-api.git
-cd nest-travel-api
+git clone https://github.com/tokudev-id/toku-template-api.git
+cd nest-template-api
 
 # Start all services (API, PostgreSQL, Nginx)
 docker-compose up -d
@@ -72,8 +72,8 @@ docker-compose down
 #### Option 2: Development Setup
 ```bash
 # Clone the repository
-git clone https://github.com/tokudev-id/toku-travel-api.git
-cd nest-travel-api
+git clone https://github.com/tokudev-id/toku-template-api.git
+cd nest-template-api
 
 # Start development environment
 docker-compose -f docker-compose.dev.yml up -d --build
@@ -107,7 +107,7 @@ docker-compose -f docker-compose.dev.yml down
 3. **Start PostgreSQL**
    ```bash
    # Using Docker
-   docker run --name postgres -e POSTGRES_PASSWORD=nestpass -e POSTGRES_USER=nestuser -e POSTGRES_DB=travel-app -p 5432:5432 -d postgres:15-alpine
+   docker run --name postgres -e POSTGRES_PASSWORD=nestpass -e POSTGRES_USER=nestuser -e POSTGRES_DB=template-app -p 5432:5432 -d postgres:15-alpine
    ```
 
 4. **Run migrations**
@@ -124,7 +124,7 @@ docker-compose -f docker-compose.dev.yml down
 
 ### 📖 Interactive Documentation
 - **Swagger UI**: http://localhost:3000/api/docs
-- **Postman Collection**: Import `Travel-API.postman_collection.json` into Postman
+- **Postman Collection**: Import `Template-API.postman_collection.json` into Postman
 
 ### 📋 Detailed API Reference
 For a complete list of all API endpoints with detailed request/response examples, see:
@@ -164,8 +164,8 @@ Authorization: Bearer <jwt-token>
 Content-Type: application/json
 
 {
-  "title": "My Travel Story",
-  "content": "This is my amazing travel experience..."
+  "title": "My Template Story",
+  "content": "This is my amazing template experience..."
 }
 ```
 
@@ -186,7 +186,7 @@ Authorization: Bearer <jwt-token>
 Content-Type: application/json
 
 {
-  "title": "Updated Travel Story",
+  "title": "Updated Template Story",
   "content": "Updated content..."
 }
 ```
@@ -302,7 +302,7 @@ POSTGRES_HOST=localhost
 POSTGRES_PORT=5432
 POSTGRES_USER=nestuser
 POSTGRES_PASSWORD=nestpass
-POSTGRES_DB=travel-app
+POSTGRES_DB=template-app
 JWT_SECRET=your-super-secret-jwt-key
 JWT_EXPIRES_IN=7d
 NODE_ENV=local
@@ -314,7 +314,7 @@ POSTGRES_HOST=db
 POSTGRES_PORT=5432
 POSTGRES_USER=nestuser
 POSTGRES_PASSWORD=nestpass
-POSTGRES_DB=travel-app
+POSTGRES_DB=template-app
 JWT_SECRET=your-super-secret-jwt-key-change-in-production
 JWT_EXPIRES_IN=7d
 NODE_ENV=production

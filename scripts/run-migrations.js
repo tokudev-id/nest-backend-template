@@ -13,7 +13,7 @@ const AppDataSource = new DataSource({
   port: parseInt(process.env.POSTGRES_PORT || '5432'),
   username: process.env.POSTGRES_USER || 'nestuser',
   password: process.env.POSTGRES_PASSWORD || 'nestpass',
-  database: process.env.POSTGRES_DB || 'travel-app',
+  database: process.env.POSTGRES_DB || 'template-app',
   entities: ['dist/**/*.entity.js'],
   migrations: ['dist/migrations/*.js'],
   synchronize: false,

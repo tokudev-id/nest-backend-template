@@ -17,7 +17,7 @@ async function bootstrap() {
   app.enableCors({
     origin:
       process.env.NODE_ENV === 'production'
-        ? ['https://toku-travel.torikul.my.id', 'http://localhost:8000'] // TODO: Remove localhost:8000, its for local testing
+        ? ['https://toku-template.torikul.my.id', 'http://localhost:8000'] // TODO: Remove localhost:8000, its for local testing
         : [
             'http://localhost:3000',
             'http://localhost:3001',
@@ -43,8 +43,8 @@ async function bootstrap() {
 
   // Swagger documentation
   const config = new DocumentBuilder()
-    .setTitle('Travel API Services')
-    .setDescription('Travel API services with Auth, Articles, Comments')
+    .setTitle('Template API Services')
+    .setDescription('Template API services with Auth, Articles, Comments')
     .setVersion('1.0')
     .addBearerAuth()
     .addTag('Auth', 'Authentication endpoints')

@@ -1,15 +1,15 @@
-# 📚 NestJS Travel API Documentation
+# 📚 NestJS Template API Documentation
 
 ## 🚀 Overview
 
-The NestJS Travel API is a comprehensive RESTful API for managing travel articles, comments, and likes with JWT authentication. This documentation provides detailed information about all endpoints, request/response structures, and edge cases.
+The NestJS Template API is a comprehensive RESTful API for managing template articles, comments, and likes with JWT authentication. This documentation provides detailed information about all endpoints, request/response structures, and edge cases.
 
 ## 🔗 Connection Details
 
 ### Base URL
 ```
 Development: http://localhost:3000/api/v1
-Production: https://toku-travel.torikul.my.id/api/v1
+Production: https://toku-template.torikul.my.id/api/v1
 ```
 
 ### Authentication
@@ -389,14 +389,14 @@ Content-Type: application/json
 **Request Body:**
 ```json
 {
-  "title": "My Amazing Travel to Bali",
-  "content": "This is my incredible travel experience to Bali. The beaches were beautiful and the culture was amazing!",
+  "title": "My Amazing Template to Bali",
+  "content": "This is my incredible template experience to Bali. The beaches were beautiful and the culture was amazing!",
   "summary": "A comprehensive guide to exploring Bali's best beaches and cultural sites",
   "country": "Indonesia",
   "city": "Bali",
   "tags": ["beach", "culture", "adventure"],
   "images": ["https://example.com/bali-beach1.jpg", "https://example.com/bali-temple.jpg"],
-  "travelDate": "2024-06-15",
+  "templateDate": "2024-06-15",
   "duration": 7,
   "isPublished": true
 }
@@ -410,7 +410,7 @@ Content-Type: application/json
 - `city`: Optional, string
 - `tags`: Optional, array of strings
 - `images`: Optional, array of string URLs
-- `travelDate`: Optional, valid date string (YYYY-MM-DD)
+- `templateDate`: Optional, valid date string (YYYY-MM-DD)
 - `duration`: Optional, integer, min 1, max 365 (days)
 - `isPublished`: Optional, boolean, default false
 
@@ -421,8 +421,8 @@ Content-Type: application/json
   "message": "Article created successfully",
   "data": {
     "id": 1,
-    "title": "My Amazing Travel to Bali",
-    "content": "This is my incredible travel experience to Bali...",
+    "title": "My Amazing Template to Bali",
+    "content": "This is my incredible template experience to Bali...",
     "author": {
       "id": 1,
       "email": "john@example.com"
@@ -485,8 +485,8 @@ Authorization: Bearer <your-jwt-token>
   "data": [
     {
       "id": 1,
-      "title": "My Amazing Travel to Bali",
-      "content": "This is my incredible travel experience...",
+      "title": "My Amazing Template to Bali",
+      "content": "This is my incredible template experience...",
       "author": {
         "id": 1,
         "email": "john@example.com"
@@ -541,8 +541,8 @@ Authorization: Bearer <your-jwt-token>
   "message": "Article retrieved successfully",
   "data": {
     "id": 1,
-    "title": "My Amazing Travel to Bali",
-    "content": "This is my incredible travel experience...",
+    "title": "My Amazing Template to Bali",
+    "content": "This is my incredible template experience...",
     "author": {
       "id": 1,
       "email": "john@example.com"
@@ -587,7 +587,7 @@ Content-Type: application/json
 **Request Body:**
 ```json
 {
-  "title": "Updated Travel to Bali",
+  "title": "Updated Template to Bali",
   "content": "Updated content about my amazing Bali adventure!"
 }
 ```
@@ -603,7 +603,7 @@ Content-Type: application/json
   "message": "Article updated successfully",
   "data": {
     "id": 1,
-    "title": "Updated Travel to Bali",
+    "title": "Updated Template to Bali",
     "content": "Updated content about my amazing Bali adventure!",
     "author": {
       "id": 1,
@@ -668,8 +668,8 @@ Authorization: Bearer <your-jwt-token>
   "message": "Article deleted successfully",
   "data": {
     "id": 1,
-    "title": "My Amazing Travel to Bali",
-    "content": "This is my incredible travel experience...",
+    "title": "My Amazing Template to Bali",
+    "content": "This is my incredible template experience...",
     "author": {
       "id": 1,
       "email": "john@example.com"
@@ -745,7 +745,7 @@ Content-Type: application/json
     },
     "article": {
       "id": 1,
-      "title": "My Amazing Travel to Bali"
+      "title": "My Amazing Template to Bali"
     },
     "createdAt": "2024-01-01T12:00:00.000Z",
     "updatedAt": "2024-01-01T12:00:00.000Z"
@@ -989,7 +989,7 @@ Authorization: Bearer <your-jwt-token>
     },
     "article": {
       "id": 1,
-      "title": "My Amazing Travel to Bali"
+      "title": "My Amazing Template to Bali"
     },
     "createdAt": "2024-01-01T12:00:00.000Z",
     "updatedAt": "2024-01-01T12:00:00.000Z"
@@ -1308,8 +1308,8 @@ curl -X POST http://localhost:3000/api/v1/articles \
   -H "Authorization: Bearer YOUR_JWT_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
-    "title": "My Travel Story",
-    "content": "This is my amazing travel experience..."
+    "title": "My Template Story",
+    "content": "This is my amazing template experience..."
   }'
 ```
 
@@ -1350,8 +1350,8 @@ const articleResponse = await fetch('http://localhost:3000/api/v1/articles', {
     'Content-Type': 'application/json'
   },
   body: JSON.stringify({
-    title: 'My Travel Story',
-    content: 'This is my amazing travel experience...'
+    title: 'My Template Story',
+    content: 'This is my amazing template experience...'
   })
 });
 ```

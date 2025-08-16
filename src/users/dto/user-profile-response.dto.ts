@@ -11,6 +11,12 @@ export class UserProfileResponseDto {
   @ApiProperty()
   email: string;
 
+  @ApiProperty()
+  phoneNumber: string;
+
+  @ApiProperty()
+  username: string;
+
   @ApiProperty({ required: false })
   profilePictureUrl?: string;
 
@@ -25,15 +31,4 @@ export class UserProfileResponseDto {
 
   @ApiProperty()
   updatedAt: Date;
-
-  @ApiProperty({ description: 'Total number of comments made by the user' })
-  totalComments: number;
-
-  @ApiProperty({ description: 'Total number of articles liked by the user' })
-  totalLikes: number;
-
-  @ApiProperty({
-    description: 'Total number of articles published by the user',
-  })
-  totalArticlesPublished: number;
 }

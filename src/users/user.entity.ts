@@ -2,13 +2,9 @@ import {
   Entity,
   PrimaryGeneratedColumn,
   Column,
-  OneToMany,
   CreateDateColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import { Article } from '../articles/article.entity';
-import { Comment } from '../comments/comment.entity';
-import { Like } from '../likes/like.entity';
 
 export enum ExternalProvider {
   TOKU = 'toku',
@@ -28,6 +24,12 @@ export class User {
   @Column({ unique: true })
   email: string;
 
+  @Column({ unique: true })
+  phoneNumber: string;
+
+  @Column({ unique: true })
+  username: string;
+
   @Column({ nullable: true })
   passwordHash: string;
 
@@ -43,15 +45,6 @@ export class User {
     nullable: true,
   })
   externalProvider: ExternalProvider;
-
-  @OneToMany(() => Article, (article) => article.author)
-  articles: Article[];
-
-  @OneToMany(() => Comment, (comment) => comment.author)
-  comments: Comment[];
-
-  @OneToMany(() => Like, (like) => like.user)
-  likes: Like[];
 
   @CreateDateColumn()
   createdAt: Date;

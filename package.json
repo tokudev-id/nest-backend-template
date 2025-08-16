@@ -1,5 +1,5 @@
 {
-  "name": "nest-travel-api",
+  "name": "nest-template-api",
   "version": "0.0.1",
   "description": "",
   "author": "",
@@ -20,13 +20,8 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
-    "migration:generate": "typeorm-ts-node-commonjs migration:generate -d src/data-source.ts",
-    "migration:run": "typeorm-ts-node-commonjs migration:run -d src/data-source.ts",
-    "migration:run:prod": "node scripts/run-migrations.js",
-    "migration:revert": "typeorm-ts-node-commonjs migration:revert -d src/data-source.ts",
-    "migration:show": "typeorm-ts-node-commonjs migration:show -d src/data-source.ts",
-    "docker:build": "docker build -t travel-api .",
-    "docker:run": "docker run -p 3000:3000 travel-api",
+    "typeorm": "ts-node ./node_modules/typeorm/cli.js",
+
     "docker:compose:up": "docker compose up -d --build",
     "docker:compose:down": "docker compose down",
     "docker:compose:logs": "docker compose logs -f",

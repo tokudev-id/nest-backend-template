@@ -5,21 +5,12 @@ import { User } from './user.entity';
 import { UserProfileResponseDto } from './dto/user-profile-response.dto';
 import { UpdateUserProfileDto } from './dto/update-user-profile.dto';
 import { ErrorService } from '../common/services/error.service';
-import { Like } from 'src/likes/like.entity';
-import { Article } from 'src/articles/article.entity';
-import { Comment } from 'src/comments/comment.entity';
 
 @Injectable()
 export class UsersService {
   constructor(
     @InjectRepository(User)
     private userRepository: Repository<User>,
-    @InjectRepository(Comment)
-    private commentRepository: Repository<Comment>,
-    @InjectRepository(Like)
-    private likeRepository: Repository<Like>,
-    @InjectRepository(Article)
-    private articleRepository: Repository<Article>,
     private errorService: ErrorService,
   ) {}
 
@@ -49,34 +40,17 @@ export class UsersService {
       this.errorService.throwNotFound('User not found');
     }
 
-    const [totalComments, totalLikes, totalArticlesPublished]: [
-      number,
-      number,
-      number,
-    ] = await Promise.all([
-      this.commentRepository.count({
-        where: { author: { id: userId } },
-      }),
-      this.likeRepository.count({
-        where: { user: { id: userId } },
-      }),
-      this.articleRepository.count({
-        where: { author: { id: userId }, isPublished: true },
-      }),
-    ]);
-
     return {
       id: user.id,
       name: user.name,
       email: user.email,
+      phoneNumber: user.phoneNumber,
+      username: user.username,
       profilePictureUrl: user.profilePictureUrl,
       externalAccountId: user.externalAccountId,
       externalProvider: user.externalProvider,
       createdAt: user.createdAt,
       updatedAt: user.updatedAt,
-      totalComments: totalComments,
-      totalLikes,
-      totalArticlesPublished,
     };
   }
 

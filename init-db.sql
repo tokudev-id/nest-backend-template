@@ -1,12 +1,12 @@
--- Initialize Travel API Database
+-- Initialize Template API Database
 -- This script runs when the PostgreSQL container starts for the first time
 
 -- Create database if it doesn't exist
-SELECT 'CREATE DATABASE travel-app'
-WHERE NOT EXISTS (SELECT FROM pg_database WHERE datname = 'travel-app')\gexec
+SELECT 'CREATE DATABASE template-app'
+WHERE NOT EXISTS (SELECT FROM pg_database WHERE datname = 'template-app')\gexec
 
 -- Connect to the database
-\c travel-app;
+\c template-app;
 
 -- Create extensions if needed
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
